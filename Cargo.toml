@@ -1,0 +1,11 @@
+[package]
+name = "actlog"
+version = "0.1.0"
+edition = "2024"
+authors = ["Morshedul Munna <morshedulmunna1@gmail.com>"]
+description = "⚙️ A Rust-based CLI tool to inspect running processes, open ports, and kill misbehaving PIDs or ports from the terminal."
+license = "MIT"
+repository = "https://github.com/Execute-Soft/actlog"
+readme = "README.md"
+
+[dependencies]
