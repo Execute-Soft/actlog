@@ -1,11 +1,14 @@
 mod app;
 mod cli;
+mod commands;
+mod error;
 
-use app::App;
 use clap::Parser;
 use cli::Cli;
+use error::AppError;
 
-fn main() {
+#[tokio::main]
+async fn main() -> Result<(), AppError> {
     let cli = Cli::parse();
-    App::run(cli);
+    app::run(cli).await
 }

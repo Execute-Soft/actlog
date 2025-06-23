@@ -1,49 +1,36 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(name = "actlog")]
 #[command(
-    about = "⚙️ A Rust-based CLI tool to inspect running processes, open ports, and kill misbehaving PIDs or ports from the terminal."
+    name = "actlog",
+    about = "A CLI tool to inspect running processes, open ports, and kill misbehaving PIDs or ports from the terminal.",
+    version,
+    long_about = "A CLI tool to inspect running processes, open ports, and kill misbehaving PIDs or ports from the terminal."
 )]
-#[command(version)]
 pub struct Cli {
-    /// Show all available features
-    #[arg(short, long)]
-    pub features: bool,
-
+    /// The command to run
     #[command(subcommand)]
     pub command: Option<Commands>,
 }
 
 #[derive(Subcommand)]
 pub enum Commands {
+    /// List running processes or open ports
     List {
-        /// List all running processes
-        #[arg(short, long)]
+        /// List processes
+        #[arg(long)]
         processes: bool,
-
-        /// List all open ports
-        #[arg(short, long)]
+        /// List open ports
+        #[arg(long)]
         ports: bool,
-
+    },
+    /// Kill a process or port
+    Kill {
         /// Kill a process by PID
+        #[arg(long)]
+        process: Option<u32>,
+        /// Kill a port by number
         #[arg(short, long)]
-        kill: bool,
-
-        /// Kill a port by port number
-        #[arg(short, long)]
-        kill_port: bool,
-
-        /// Show help
-        #[arg(short, long)]
-        help: bool,
-
-        /// Show version
-        #[arg(short, long)]
-        version: bool,
-
-        /// Show usage
-        #[arg(short, long)]
-        usage: bool,
+        port: Option<u16>,
     },
 }
