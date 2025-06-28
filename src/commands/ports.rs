@@ -62,6 +62,8 @@ pub async fn list_ports_with_options(options: PortListOptions) -> Result<(), App
     };
 
     display_ports(&final_ports);
+
+    dbg!(&final_ports);
     Ok(())
 }
 
