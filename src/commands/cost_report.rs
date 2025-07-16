@@ -31,6 +31,7 @@ pub struct CostAlert {
     pub actual_cost: f64,
 }
 
+#[allow(unused_variables, dead_code)]
 pub async fn report_costs(cmd: &Commands) -> Result<(), AppError> {
     if let Commands::ReportCosts {
         provider,
@@ -85,6 +86,7 @@ pub async fn report_costs(cmd: &Commands) -> Result<(), AppError> {
     Ok(())
 }
 
+#[allow(unused_variables, dead_code)]
 fn determine_date_range(
     start_date: &Option<String>,
     end_date: &Option<String>,
@@ -108,6 +110,7 @@ fn determine_date_range(
     Ok((start, end))
 }
 
+#[allow(unused_variables, dead_code, deprecated)]
 async fn generate_aws_cost_report(
     start: &DateTime<Utc>,
     end: &DateTime<Utc>,
@@ -202,6 +205,7 @@ async fn generate_aws_cost_report(
     })
 }
 
+#[allow(unused_variables, dead_code)]
 async fn generate_gcp_cost_report(
     start: &DateTime<Utc>,
     end: &DateTime<Utc>,
@@ -255,6 +259,7 @@ async fn generate_gcp_cost_report(
     })
 }
 
+#[allow(unused_variables, dead_code)]
 async fn generate_azure_cost_report(
     start: &DateTime<Utc>,
     end: &DateTime<Utc>,
@@ -308,6 +313,7 @@ async fn generate_azure_cost_report(
     })
 }
 
+#[allow(unused_variables, dead_code)]
 fn output_cost_report(report: &CostReport, format: &OutputFormat) -> Result<(), AppError> {
     match format {
         OutputFormat::Table => {

@@ -17,6 +17,7 @@ pub struct ResourceSummary {
     pub additional_info: HashMap<String, String>,
 }
 
+#[allow(unused_variables, dead_code)]
 pub async fn list_resources(cmd: &Commands) -> Result<(), AppError> {
     if let Commands::List {
         provider,
@@ -49,6 +50,7 @@ pub async fn list_resources(cmd: &Commands) -> Result<(), AppError> {
     Ok(())
 }
 
+#[allow(unused_variables, dead_code, deprecated)]
 async fn list_aws_resources(
     resource_type: &ResourceType,
 ) -> Result<Vec<ResourceSummary>, AppError> {
@@ -212,6 +214,7 @@ async fn list_aws_resources(
     Ok(resources)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn list_gcp_resources(
     resource_type: &ResourceType,
 ) -> Result<Vec<ResourceSummary>, AppError> {
@@ -271,6 +274,7 @@ async fn list_gcp_resources(
     Ok(resources)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn list_azure_resources(
     resource_type: &ResourceType,
 ) -> Result<Vec<ResourceSummary>, AppError> {

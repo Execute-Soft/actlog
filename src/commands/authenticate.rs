@@ -147,20 +147,6 @@ async fn authenticate_gcp(profile: &str) -> Result<CloudCredentials, AppError> {
         ));
     }
 
-    // Validate credentials by making a test API call
-    let client = reqwest::Client::new();
-    let url = format!(
-        "https://compute.googleapis.com/compute/v1/projects/{}/zones",
-        project_id.as_ref().unwrap()
-    );
-
-    // For now, we'll just validate the project ID format
-    // In a real implementation, you'd use the Google Cloud client library
-    println!(
-        "✅ GCP project ID validated: {}",
-        project_id.as_ref().unwrap()
-    );
-
     Ok(CloudCredentials {
         provider: "gcp".to_string(),
         profile: profile.to_string(),
@@ -198,18 +184,6 @@ async fn authenticate_azure(profile: &str) -> Result<CloudCredentials, AppError>
             "Azure service principal credentials not found".to_string(),
         ));
     }
-
-    // Validate credentials by making a test API call
-    let client = reqwest::Client::new();
-    let url = format!("https://management.azure.com/subscriptions/{}/providers/Microsoft.Compute/locations?api-version=2021-04-01", 
-        subscription_id.as_ref().unwrap());
-
-    // For now, we'll just validate the subscription ID format
-    // In a real implementation, you'd use the Azure SDK
-    println!(
-        "✅ Azure subscription ID validated: {}",
-        subscription_id.as_ref().unwrap()
-    );
 
     Ok(CloudCredentials {
         provider: "azure".to_string(),

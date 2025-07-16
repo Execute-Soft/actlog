@@ -24,6 +24,7 @@ pub struct ScalingPolicy {
     pub scale_down_cooldown: i32,
 }
 
+#[allow(unused_variables, dead_code)]
 pub async fn scale_instances(cmd: &Commands) -> Result<(), AppError> {
     if let Commands::ScaleInstances {
         provider,
@@ -108,6 +109,7 @@ pub async fn scale_instances(cmd: &Commands) -> Result<(), AppError> {
     Ok(())
 }
 
+#[allow(unused_variables, dead_code, deprecated)]
 async fn analyze_aws_scaling(
     policy: &ScalingPolicy,
     resource_group: &Option<String>,
@@ -195,6 +197,7 @@ async fn analyze_aws_scaling(
     Ok(actions)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn analyze_gcp_scaling(
     policy: &ScalingPolicy,
     resource_group: &Option<String>,
@@ -237,6 +240,7 @@ async fn analyze_gcp_scaling(
     Ok(actions)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn analyze_azure_scaling(
     policy: &ScalingPolicy,
     resource_group: &Option<String>,
@@ -279,6 +283,7 @@ async fn analyze_azure_scaling(
     Ok(actions)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn get_aws_cpu_utilization(
     client: &aws_sdk_cloudwatch::Client,
     group_name: &str,
@@ -316,6 +321,7 @@ async fn get_aws_cpu_utilization(
     Ok(0.0)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn get_aws_memory_utilization(
     client: &aws_sdk_cloudwatch::Client,
     group_name: &str,
@@ -326,6 +332,7 @@ async fn get_aws_memory_utilization(
     Ok(70.0)
 }
 
+#[allow(unused_variables, dead_code, deprecated)]
 async fn execute_aws_scaling(action: &ScalingAction) -> Result<(), AppError> {
     let config = aws_config::from_env().load().await;
     let autoscaling_client = aws_sdk_autoscaling::Client::new(&config);

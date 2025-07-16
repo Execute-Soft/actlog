@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[allow(unused_variables, dead_code)]
 pub struct ResourceInfo {
     pub id: String,
     pub name: String,
@@ -27,6 +28,7 @@ pub struct CleanupAction {
     pub estimated_savings: f64,
 }
 
+#[allow(unused_variables, dead_code)]
 pub async fn cleanup_resources(cmd: &Commands) -> Result<(), AppError> {
     if let Commands::Cleanup {
         provider,
@@ -122,6 +124,7 @@ pub async fn cleanup_resources(cmd: &Commands) -> Result<(), AppError> {
     Ok(())
 }
 
+#[allow(unused_variables, dead_code)]
 async fn find_aws_resources(
     resource_type: &ResourceType,
     age_threshold: u32,
@@ -243,6 +246,7 @@ async fn find_aws_resources(
     Ok(resources)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn find_gcp_resources(
     resource_type: &ResourceType,
     age_threshold: u32,
@@ -284,6 +288,7 @@ async fn find_gcp_resources(
     Ok(resources)
 }
 
+#[allow(unused_variables, dead_code)]
 async fn find_azure_resources(
     resource_type: &ResourceType,
     age_threshold: u32,
@@ -325,6 +330,7 @@ async fn find_azure_resources(
     Ok(resources)
 }
 
+#[allow(unused_variables, dead_code)]
 fn analyze_cleanup_actions(
     resources: &[ResourceInfo],
     provider: &CloudProvider,
