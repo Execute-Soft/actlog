@@ -70,6 +70,7 @@ uuid = { version = "1.0", features = ["v4"] }
 
 # Directory utilities
 dirs = "5.0"
+async-trait = "0.1.88"
 
 [dev-dependencies]
 assert_cmd = "2.0"
