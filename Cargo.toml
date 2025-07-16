@@ -1,12 +1,13 @@
 [package]
 name = "actlog"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 authors = ["Morshedul Munna <morshedulmunna1@gmail.com>"]
-description = "⚙️ A Rust-based CLI tool to inspect running processes, open ports, and kill misbehaving PIDs or ports from the terminal."
+description = "☁️ A Rust-based CLI tool for cloud resource management, cost optimization, and automated scaling across AWS, GCP, and Azure."
 license = "MIT"
 repository = "https://github.com/Execute-Soft/actlog"
 readme = "README.md"
+
 [dependencies]
 # CLI argument parsing
 clap = { version = "4", features = ["derive"] }
@@ -25,23 +26,54 @@ log = "0.4"
 # Async runtime
 tokio = { version = "1", features = ["full"] }
 
-# Optional: For configuration files
-serde = { version = "1.0", features = ["derive"], optional = true }
-serde_json = { version = "1.0", optional = true }
-toml = { version = "0.8", optional = true }
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 
-# New dependencies
-sysinfo = "0.30"
-psutil = "3.2"
-netstat2 = "0.9"
+# HTTP client for cloud APIs
+reqwest = { version = "0.11", features = ["json"] }
+
+# Environment variables
+dotenv = "0.15"
+
+# AWS SDK
+aws-config = "1.0"
+aws-sdk-ec2 = "1.0"
+aws-sdk-s3 = "1.0"
+aws-sdk-cloudwatch = "1.0"
+aws-sdk-costexplorer = "1.0"
+aws-sdk-autoscaling = "1.0"
+
+# Google Cloud SDK (using REST APIs)
+google-cloud-auth = "0.20"
+
+# Azure SDK (using REST APIs)
+azure_identity = "0.20"
+
+# Date/time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+# Configuration
+toml = "0.8"
+
+# CSV handling for reports
 csv = "1.3"
-tui = "0.19"
-crossterm = "0.27"
+
+# Table formatting for reports
+tabled = "0.15"
+
+# Progress indicators
+indicatif = "0.17"
+
+# UUID generation
+uuid = { version = "1.0", features = ["v4"] }
+
+# Directory utilities
+dirs = "5.0"
 
 [dev-dependencies]
 assert_cmd = "2.0"
 predicates = "3.0"
-
 
 [[bin]]
 name = "actlog"

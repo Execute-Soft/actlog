@@ -1,28 +1,33 @@
 use crate::cli::{Cli, Commands};
-use crate::commands::{ports, process};
+use crate::commands::{
+    authenticate, cleanup_resources, configure, list_resources, report_costs, scale_instances,
+};
 use crate::error::AppError;
 
 pub async fn run(cli: Cli) -> Result<(), AppError> {
     match &cli.command {
-        Some(Commands::List { processes, ports }) => {
-            if *processes {
-                process::list_processes().await?;
-            }
-            if *ports {
-                ports::list_ports().await?;
-            }
-        }
-        Some(Commands::Kill { process, port }) => {
-            if let Some(process) = process {
-                println!("Killing process: {}", process);
-            }
-            if let Some(port) = port {
-                println!("Killing port: {}", port);
-            }
+        Commands::Authenticate { .. } => {
+            authenticate(&cli.command).await?;
         }
 
-        None => {
-            println!("No command provided");
+        Commands::Config { .. } => {
+            configure(&cli.command).await?;
+        }
+
+        Commands::ReportCosts { .. } => {
+            report_costs(&cli.command).await?;
+        }
+
+        Commands::ScaleInstances { .. } => {
+            scale_instances(&cli.command).await?;
+        }
+
+        Commands::Cleanup { .. } => {
+            cleanup_resources(&cli.command).await?;
+        }
+
+        Commands::List { .. } => {
+            list_resources(&cli.command).await?;
         }
     }
 
