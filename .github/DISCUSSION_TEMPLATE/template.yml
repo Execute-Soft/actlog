@@ -1,0 +1,33 @@
+---
+name: Discussion Template
+about: Template for starting a new discussion with system and issue details
+labels: discussion
+---
+
+## Title
+
+<!-- Provide a short, descriptive title for your discussion -->
+
+## OS
+
+<!-- Specify your operating system (e.g., macOS, Linux, Windows) -->
+
+## Shell
+
+<!-- Specify your shell (e.g., bash, zsh, fish) -->
+
+## Version
+
+<!-- Specify the version of the software or tool you are using -->
+
+## Issue
+
+<!-- Describe the issue or topic you want to discuss -->
+
+## Log
+
+<!-- Paste any relevant logs or error messages here -->
+
+## Extra Info
+
+<!-- Add any additional information or context here --> 
